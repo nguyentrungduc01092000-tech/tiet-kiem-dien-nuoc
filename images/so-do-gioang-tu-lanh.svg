@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-label="Sơ đồ kiểm tra gioăng tủ lạnh bằng tờ giấy: kẹp tờ giấy vào cửa tủ rồi đóng lại, kéo tờ giấy ra. Nếu kéo ra thấy có lực cản thì gioăng còn kín. Nếu kéo ra dễ dàng thì gioăng đã hở và cần thay.">
+  <title>Kiểm tra gioăng tủ lạnh bằng tờ giấy</title>
+  <rect x="0" y="0" width="800" height="520" fill="#f4f8fb"/>
+  <text x="400" y="44" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="bold" fill="#1a3a4d">Kiểm tra gioăng tủ lạnh bằng tờ giấy</text>
+  <text x="400" y="74" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4a6572">Hình minh họa tự vẽ, không phải ảnh chụp thực hành</text>
+  <!-- Fridge body -->
+  <rect x="110" y="110" width="280" height="360" rx="12" fill="#dbe7ee" stroke="#1a3a4d" stroke-width="3"/>
+  <rect x="110" y="110" width="280" height="150" rx="12" fill="#eaf2f7" stroke="#1a3a4d" stroke-width="3"/>
+  <line x1="110" y1="260" x2="390" y2="260" stroke="#1a3a4d" stroke-width="3"/>
+  <rect x="360" y="150" width="14" height="60" rx="7" fill="#5b7a8c"/>
+  <rect x="360" y="300" width="14" height="60" rx="7" fill="#5b7a8c"/>
+  <text x="250" y="140" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#4a6572">Ngăn đông</text>
+  <text x="250" y="440" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#4a6572">Ngăn mát</text>
+  <!-- Gasket line -->
+  <line x1="390" y1="110" x2="390" y2="470" stroke="#c0392b" stroke-width="8"/>
+  <text x="410" y="290" font-family="sans-serif" font-size="15" font-weight="bold" fill="#c0392b">Gioăng cao su</text>
+  <!-- Paper sheet -->
+  <rect x="330" y="300" width="130" height="90" fill="#ffffff" stroke="#1a3a4d" stroke-width="2"/>
+  <line x1="345" y1="325" x2="445" y2="325" stroke="#9db4c0" stroke-width="2"/>
+  <line x1="345" y1="345" x2="445" y2="345" stroke="#9db4c0" stroke-width="2"/>
+  <line x1="345" y1="365" x2="420" y2="365" stroke="#9db4c0" stroke-width="2"/>
+  <text x="395" y="315" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1a3a4d">Tờ giấy</text>
+  <!-- Arrow pulling -->
+  <line x1="470" y1="345" x2="580" y2="345" stroke="#1a3a4d" stroke-width="3" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1a3a4d"/>
+    </marker>
+  </defs>
+  <text x="525" y="330" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#1a3a4d">Kéo ra</text>
+  <!-- Result boxes -->
+  <rect x="470" y="110" width="270" height="90" rx="8" fill="#e6f4ea" stroke="#2e7d32" stroke-width="2"/>
+  <text x="605" y="140" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2e7d32">Kéo ra thấy có lực cản</text>
+  <text x="605" y="166" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#2e7d32">Gioăng còn kín — tốt</text>
+  <rect x="470" y="220" width="270" height="90" rx="8" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+  <text x="605" y="250" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#c0392b">Kéo ra dễ dàng</text>
+  <text x="605" y="276" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#c0392b">Gioăng đã hở — cần thay</text>
+  <text x="400" y="505" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#4a6572">Đóng cửa tủ lại rồi kéo nhẹ tờ giấy. Làm ở vài vị trí quanh cửa.</text>
+</svg>

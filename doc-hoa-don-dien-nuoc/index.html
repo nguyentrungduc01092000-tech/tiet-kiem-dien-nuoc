@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đọc hóa đơn điện nước: hiểu các khoản tiền và phát hiện bất thường</title>
+<meta name="description" content="Biểu giá điện 6 bậc theo QĐ 1279/QĐ-BCT, giá nước TP.HCM, ví dụ tự tính 250 kWh và 15 m³.">
+<link rel="canonical" href="https://plasma.click/doc-hoa-don-dien-nuoc/">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<p class="site-title"><a href="../">Tiết kiệm điện nước trong nhà</a></p>
+<nav class="main"><a href="../">Trang chủ</a> <a href="../dieu-hoa-lam-mat">Điều hòa &amp; làm mát</a> <a href="../chon-mua-thiet-bi">Chọn mua thiết bị</a> <a href="../tu-lanh-nha-bep">Tủ lạnh &amp; nhà bếp</a> <a href="../tiet-kiem-nuoc">Tiết kiệm nước</a> <a href="../mau-theo-doi-dien-nuoc">Mẫu theo dõi</a> <a href="../gioi-thieu">Giới thiệu</a> <a href="../lien-he">Liên hệ</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="../">Trang chủ</a> › <a href="../tiet-kiem-nuoc/">Tiết kiệm nước</a> › Bài 20</nav><h1>Đọc hóa đơn điện nước: hiểu các khoản tiền và phát hiện bất thường</h1>
+<p><em>Chuyên mục: Tiết kiệm nước — Cập nhật: 23/11/2026</em></p>
+<p>Hầu hết các gia đình chỉ nhìn vào một con số trên hóa đơn điện nước: tổng tiền phải trả. Nhưng hóa đơn còn ghi nhiều thông tin khác, và chính những dòng chữ nhỏ đó mới cho bạn biết nhà mình dùng điện nước nhiều hay ít, tiền tăng vì dùng nhiều hơn hay vì giá thay đổi, và khi nào hóa đơn tăng bất thường đến mức cần kiểm tra rò rỉ. Bài này hướng dẫn bạn đọc từng mục trên hóa đơn điện và hóa đơn nước, tự tính lại tiền theo biểu giá, và phát hiện dấu hiệu bất thường trước khi nó thành một khoản tiền lớn.</p>
+<p>Một lưu ý quan trọng về giá trong bài: giá điện và giá nước dưới đây là mức giá được kiểm chứng ngày 23/11/2026, theo các quyết định và thông báo được dẫn ở cuối bài. Giá điện nước có thể thay đổi theo quyết định của cơ quan có thẩm quyền, nên bạn hãy dùng bảng giá trong bài để hiểu cách tính, còn số tiền chính xác thì đối chiếu với hóa đơn mới nhất của nhà mình hoặc ứng dụng của đơn vị cung cấp điện nước. Bài này không khẳng định giá cố định.</p>
+<h2>Hóa đơn điện ghi những gì</h2>
+<p>Hóa đơn điện sinh hoạt thường có các mục sau. Thứ nhất là kỳ ghi chỉ số: ngày đầu kỳ và ngày cuối kỳ, tức khoảng thời gian mà lượng điện trong hóa đơn được tính. Hầu hết các hóa đơn tính theo tháng, nhưng số ngày trong kỳ có thể là 30, 31 hoặc 28 ngày tùy tháng, nên hai tháng có cùng thói quen dùng điện vẫn có thể chênh nhau vài ngày sử dụng.</p>
+<p>Thứ hai là chỉ số công tơ đầu kỳ và cuối kỳ. Lượng điện bạn dùng trong kỳ bằng chỉ số cuối kỳ trừ đi chỉ số đầu kỳ, tính bằng kilowatt giờ, viết tắt là kWh, còn gọi là "số điện". Ví dụ, chỉ số đầu kỳ là 1.250 kWh, chỉ số cuối kỳ là 1.500 kWh, thì nhà bạn đã dùng 250 kWh trong kỳ đó. Nếu hóa đơn của bạn ghi lượng điện tiêu thụ mà không ghi chỉ số công tơ, bạn có thể xem chỉ số trên ứng dụng của EVN hoặc chụp ảnh công tơ để đối chiếu.</p>
+<p>Thứ ba là tiền điện tính theo từng bậc. Giá điện sinh hoạt ở Việt Nam tính theo bậc thang lũy tiến: dùng càng nhiều, giá mỗi số điện ở bậc cao càng đắt. Bảng dưới đây là biểu giá bán lẻ điện sinh hoạt theo Quyết định 1279/QĐ-BCT của Bộ Công Thương, áp dụng từ ngày 10/5/2025, kiểm chứng ngày 23/11/2026. Giá trong bảng chưa bao gồm thuế giá trị gia tăng.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bậc</th>
+<th>Mức dùng trong tháng</th>
+<th>Giá chưa thuế (đồng/kWh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bậc 1</td>
+<td>0–50 kWh</td>
+<td>1.984</td>
+</tr>
+<tr>
+<td>Bậc 2</td>
+<td>51–100 kWh</td>
+<td>2.050</td>
+</tr>
+<tr>
+<td>Bậc 3</td>
+<td>101–200 kWh</td>
+<td>2.380</td>
+</tr>
+<tr>
+<td>Bậc 4</td>
+<td>201–300 kWh</td>
+<td>2.998</td>
+</tr>
+<tr>
+<td>Bậc 5</td>
+<td>301–400 kWh</td>
+<td>3.350</td>
+</tr>
+<tr>
+<td>Bậc 6</td>
+<td>Từ 401 kWh trở lên</td>
+<td>3.460</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cách tính theo bậc thang có nghĩa là: 50 số điện đầu tiên tính giá bậc 1, 50 số tiếp theo tính giá bậc 2, 100 số tiếp theo tính giá bậc 3, và cứ thế. Bạn không phải trả toàn bộ lượng điện theo giá của bậc cao nhất, mà mỗi phần lượng điện được tính theo giá của bậc chứa nó. Hiểu được điều này sẽ giúp bạn hiểu vì sao giảm được vài chục số điện ở bậc cao lại giảm được nhiều tiền hơn giảm cùng số đó ở bậc thấp.</p>
+<p>Thứ tư là thuế giá trị gia tăng và tổng tiền phải trả. Hóa đơn sẽ cộng thuế giá trị gia tăng theo quy định hiện hành vào tiền điện đã tính theo bậc, rồi mới ra tổng tiền bạn phải trả. Bạn nên xem dòng thuế trên hóa đơn của mình để biết mức thuế đang áp dụng, vì mức thuế có thể thay đổi theo chính sách từng thời kỳ.</p>
+<p>Một lưu ý thêm về biểu giá: đã có thông tin về việc chuyển biểu giá điện sinh hoạt từ 6 bậc xuống 5 bậc, theo Quyết định 14/2025/QĐ-TTg của Thủ tướng Chính phủ. Tuy nhiên, các nguồn thông tin chưa thống nhất về thời điểm áp dụng biểu 5 bậc, và biểu 6 bậc trong bảng trên vẫn là biểu giá được công bố áp dụng theo Quyết định 1279/QĐ-BCT. Vì vậy, khi đọc hóa đơn, bạn hãy đối chiếu bậc giá ghi trên hóa đơn mới nhất của nhà mình với bảng trên; nếu hóa đơn của bạn đã dùng biểu 5 bậc thì hãy lấy hóa đơn làm chuẩn, không lấy bảng trong bài làm giá cố định.</p>
+<h2>Ví dụ: tự tính tiền điện một tháng dùng 250 số</h2>
+<p>Giả sử nhà bạn dùng 250 kWh trong một tháng. Bạn tách 250 kWh này theo từng bậc như sau: 50 kWh đầu tiên thuộc bậc 1, tính 50 nhân 1.984 bằng 99.200 đồng. 50 kWh tiếp theo thuộc bậc 2, tính 50 nhân 2.050 bằng 102.500 đồng. 100 kWh tiếp theo thuộc bậc 3, tính 100 nhân 2.380 bằng 238.000 đồng. 50 kWh còn lại thuộc bậc 4, tính 50 nhân 2.998 bằng 149.900 đồng. Cộng bốn khoản lại: 99.200 cộng 102.500 cộng 238.000 cộng 149.900 bằng 589.600 đồng, chưa bao gồm thuế giá trị gia tăng. Hóa đơn thực tế của bạn sẽ cộng thêm thuế vào số tiền này.</p>
+<p>Ví dụ này cho thấy hai điều. Thứ nhất, cùng là 250 số điện, nhưng 50 số cuối cùng ở bậc 4 tốn 149.900 đồng, trong khi 50 số đầu tiên ở bậc 1 chỉ tốn 99.200 đồng. Giảm được 50 số điện ở bậc cao tiết kiệm được nhiều tiền hơn giảm 50 số ở bậc thấp. Thứ hai, nếu tháng sau nhà bạn dùng 350 số thay vì 250 số, 100 số tăng thêm sẽ rơi vào bậc 4 và bậc 5, với giá 2.998 và 3.350 đồng mỗi số, nên tiền điện sẽ tăng nhanh hơn nhiều so với tỷ lệ lượng điện tăng thêm. Đây là lý do vì sao vào tháng nắng nóng, hóa đơn điện có thể tăng vọt dù bạn cảm thấy thói quen dùng điện không thay đổi bao nhiêu.</p>
+<p>Bạn có thể tự làm phép tính này với số điện thực tế của nhà mình mỗi tháng. Chỉ cần lấy số kWh trên hóa đơn, tách theo từng bậc như ví dụ trên, nhân với giá từng bậc, rồi cộng lại. Nếu số tiền bạn tính ra chênh lệch nhiều so với hóa đơn, hãy kiểm tra lại xem bạn có tách đúng bậc không, có cộng thuế chưa, và kỳ ghi chỉ số có đúng một tháng không.</p>
+<h2>Hóa đơn nước ghi những gì</h2>
+<p>Hóa đơn nước sinh hoạt có cấu trúc tương tự hóa đơn điện, nhưng có một điểm khác quan trọng: giá nước sinh hoạt ở Việt Nam tính theo định mức gắn với số người trong hộ. Nghĩa là mỗi người trong hộ được hưởng một lượng nước nhất định ở giá bậc thấp, và lượng nước vượt quá định mức đó sẽ tính giá bậc cao hơn.</p>
+<p>Hóa đơn nước thường ghi: chỉ số đồng hồ đầu kỳ và cuối kỳ, lượng nước tiêu thụ trong kỳ tính bằng mét khối (m³), số nhân khẩu được tính định mức, tiền nước theo từng bậc, thuế giá trị gia tăng, phí dịch vụ thoát nước và xử lý nước thải, và tổng tiền phải trả. Ở TP.HCM, phí dịch vụ thoát nước và xử lý nước thải được tính bằng 30% trên đơn giá cấp nước, nên tổng tiền trên hóa đơn cao hơn khá nhiều so với tiền nước sạch thuần túy.</p>
+<p>Bảng dưới đây là giá nước sinh hoạt tại TP.HCM, theo Thông báo 3698/TB-CNBT-KDDVKH năm 2025 của Công ty Cổ phần Cấp nước Bến Thành, áp dụng từ ngày 01/01/2026 đến ngày 31/12/2026, kiểm chứng ngày 23/11/2026. Giá nước sinh hoạt khác nhau theo từng địa phương, nên nếu nhà bạn không ở TP.HCM, hãy lấy bảng giá của công ty cấp nước tại địa phương mình làm chuẩn.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mức dùng mỗi người mỗi tháng</th>
+<th>Giá nước sạch (đồng/m³)</th>
+<th>Tổng gồm thuế và phí (đồng/m³)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đến 4 m³</td>
+<td>6.700</td>
+<td>9.206</td>
+</tr>
+<tr>
+<td>Từ 4 m³ đến 6 m³</td>
+<td>12.900</td>
+<td>17.725</td>
+</tr>
+<tr>
+<td>Trên 6 m³</td>
+<td>14.400</td>
+<td>19.786</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cột tổng gồm thuế và phí được tính như sau: tiền nước sạch cộng thuế giá trị gia tăng 5% của tiền nước, cộng phí thoát nước và xử lý nước thải bằng 30% giá nước sạch, cộng thuế giá trị gia tăng 8% của khoản phí thoát nước. Ví dụ ở bậc 1: 6.700 cộng 335 (thuế 5%) cộng 2.010 (phí 30%) cộng 161 (thuế 8% của phí) bằng 9.206 đồng mỗi mét khối. Bạn không cần nhớ công thức này, chỉ cần hiểu rằng tổng tiền trên hóa đơn cao hơn giá nước sạch ghi trong bảng, vì còn thuế và phí thoát nước.</p>
+<p>Ví dụ: hộ gia đình 3 người ở TP.HCM dùng 15 m³ nước trong một tháng. Định mức bậc 1 của hộ này là 3 người nhân 4 m³ bằng 12 m³, tính 12 nhân 9.206 bằng 110.472 đồng. 3 m³ còn lại vượt định mức bậc 1, rơi vào bậc 2, tính 3 nhân 17.725 bằng 53.175 đồng. Tổng tiền nước của hộ này là 110.472 cộng 53.175 bằng 163.647 đồng. Ví dụ này cho thấy định mức gắn với số người quan trọng thế nào: nếu hộ này chỉ đăng ký 2 người thay vì 3 người, định mức bậc 1 chỉ còn 8 m³, và 7 m³ còn lại sẽ tính giá bậc 2, tổng tiền sẽ cao hơn. Vì vậy bạn nên kiểm tra xem số nhân khẩu trên hóa đơn nước có đúng với số người thực tế trong nhà không, và làm thủ tục cập nhật với công ty cấp nước nếu có thay đổi.</p>
+<h2>Phát hiện bất thường trên hóa đơn</h2>
+<p>Hóa đơn tăng đột ngột là dấu hiệu cần kiểm tra, nhưng không phải lúc nào cũng có nghĩa là rò rỉ. Bạn nên so sánh hóa đơn tháng này với ba tháng gần nhất, và tự hỏi bốn câu sau trước khi kết luận.</p>
+<p>Thứ nhất, thói quen nhà bạn có thay đổi không? Có thêm người ở nhà cả ngày, có khách ở lại dài ngày, có mua thêm thiết bị mới như máy giặt, bình nóng lạnh, hay có tháng nào cả nhà đi vắng dài ngày không? Những thay đổi này làm lượng điện nước thay đổi mà không phải do rò rỉ hay tính sai.</p>
+<p>Thứ hai, thời tiết tháng này có khác không? Tháng nắng nóng thì điều hòa chạy nhiều, hóa đơn điện tăng là bình thường. Tháng mưa nhiều thì ít phải tưới cây, hóa đơn nước có thể giảm. Bạn nên so sánh tháng này với cùng tháng năm ngoái, nếu còn giữ hóa đơn cũ, thay vì chỉ so với tháng trước.</p>
+<p>Thứ ba, kỳ ghi chỉ số có dài hơn bình thường không? Nếu kỳ này ghi chỉ số sau 35 ngày thay vì 30 ngày như mọi tháng, lượng điện nước sẽ cao hơn chỉ vì kỳ tính dài hơn. Bạn xem ngày đầu kỳ và cuối kỳ trên hóa đơn để kiểm tra điều này.</p>
+<p>Thứ tư, chỉ số trên hóa đơn có khớp với chỉ số trên công tơ hay đồng hồ nước nhà bạn không? Bạn nên chụp ảnh công tơ điện và đồng hồ nước vào ngày ghi chỉ số, rồi đối chiếu với hóa đơn. Nếu chỉ số trên hóa đơn cao hơn nhiều so với chỉ số thực tế, có thể nhân viên ghi nhầm, và bạn có quyền liên hệ đơn vị cung cấp để kiểm tra lại.</p>
+<p>Nếu bốn câu trên đều không giải thích được mức tăng, bạn nên kiểm tra rò rỉ. Với nước, cách kiểm tra đã hướng dẫn chi tiết trong bài về rò rỉ nước: đóng hết các vòi, ghi lại chỉ số đồng hồ nước, không dùng nước trong hai giờ rồi đọc lại chỉ số; nếu chỉ số thay đổi thì nhà bạn có thể đang rò rỉ. Với điện, bạn tắt hết thiết bị trong nhà rồi nhìn công tơ: nếu công tơ vẫn quay nhanh, có thể có thiết bị nào đó vẫn đang chạy ngầm hoặc đường điện có vấn đề, và bạn nên gọi thợ điện kiểm tra, không tự tháo công tơ hay đấu nối lại đường điện.</p>
+<p>Khi phát hiện hóa đơn có thể sai, bạn liên hệ đơn vị cung cấp điện hoặc nước theo số điện thoại ghi trên hóa đơn, nêu rõ kỳ hóa đơn, chỉ số bạn ghi được và mức chênh lệch. Bạn nên giữ lại ảnh chụp công tơ, đồng hồ nước và hóa đơn các tháng trước làm bằng chứng. Đơn vị cung cấp có trách nhiệm kiểm tra lại, và nếu đúng là ghi sai chỉ số, họ sẽ điều chỉnh vào hóa đơn kỳ sau.</p>
+<h2>Mẫu theo dõi hóa đơn điện nước hằng tháng</h2>
+<p>Bạn nên ghi lại hóa đơn mỗi tháng vào một bảng đơn giản, để sau vài tháng bạn có bức tranh rõ ràng về mức dùng điện nước của nhà mình. Bảng dưới đây là mẫu bạn có thể chép lại vào sổ tay.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tháng</th>
+<th>Số điện (kWh)</th>
+<th>Tiền điện (đồng)</th>
+<th>Số nước (m³)</th>
+<th>Tiền nước (đồng)</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tháng 1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tháng 2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tháng 3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tháng 4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tháng 5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tháng 6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Cột ghi chú rất quan trọng: bạn ghi vào đó những thay đổi trong tháng, ví dụ "có khách ở hai tuần", "mua máy giặt mới", "đi vắng 10 ngày", "tháng nắng nóng nhất". Vài tháng sau, khi bạn nhìn lại bảng, những ghi chú này sẽ giúp bạn giải thích vì sao tháng đó hóa đơn cao hay thấp, thay vì đoán mò.</p>
+<h2>Checklist khi nhận hóa đơn điện nước</h2>
+<ul>
+<li>Xem kỳ ghi chỉ số: có đúng khoảng một tháng không, hay dài hơn bình thường?</li>
+<li>Xem lượng dùng: số kWh và số m³ tháng này so với ba tháng gần nhất thế nào?</li>
+<li>Xem tiền từng bậc: lượng dùng của bạn rơi vào bậc nào, có bậc cao bất thường không?</li>
+<li>Xem số nhân khẩu trên hóa đơn nước: có đúng số người thực tế trong nhà không?</li>
+<li>Xem dòng thuế và phí: hóa đơn đã cộng đủ thuế và phí thoát nước chưa?</li>
+<li>So sánh với thói quen và thời tiết tháng đó: có lý do gì giải thích mức tăng không?</li>
+<li>Nếu không giải thích được, kiểm tra rò rỉ nước theo hướng dẫn trong bài về rò rỉ, và kiểm tra công tơ điện sau khi tắt hết thiết bị.</li>
+<li>Giữ lại hóa đơn và ảnh chụp công tơ, đồng hồ nước để đối chiếu khi cần.</li>
+</ul>
+<h2>Kết luận</h2>
+<p>Đọc hóa đơn điện nước không khó, chỉ cần bạn biết hóa đơn gồm những mục nào và cách tính tiền theo bậc. Tiền điện tính theo 6 bậc lũy tiến, tiền nước tính theo định mức gắn với số người trong hộ, và cả hai hóa đơn đều cộng thêm thuế và phí. Khi hóa đơn tăng, bạn đừng vội kết luận là bị tính sai hay bị rò rỉ, mà hãy đối chiếu lượng dùng với ba tháng gần nhất, kiểm tra thói quen và thời tiết, rồi mới kiểm tra rò rỉ. Thói quen ghi lại hóa đơn mỗi tháng vào bảng theo dõi sẽ giúp bạn phát hiện bất thường sớm hơn rất nhiều so với việc chỉ nhìn tổng tiền phải trả rồi quên đi.</p>
+<h2>Nguồn tham khảo</h2>
+<ol>
+<li>Thư Viện Pháp Luật, "Cách tính tiền điện sinh hoạt của người thuê nhà mới nhất" — Bộ Công Thương ban hành Thông tư 60/2025/TT-BCT về thực hiện giá bán điện, hiệu lực từ 02/12/2025; theo Quyết định 1279/QĐ-BCT ngày 9/5/2025, giá điện sinh hoạt 6 bậc áp dụng từ 10/5/2025: bậc 1 (0–50 kWh) 1.984 đồng/kWh, bậc 2 (51–100 kWh) 2.050 đồng/kWh, bậc 3 (101–200 kWh) 2.380 đồng/kWh, bậc 4 (201–300 kWh) 2.998 đồng/kWh, bậc 5 (301–400 kWh) 3.350 đồng/kWh, bậc 6 (từ 401 kWh trở lên) 3.460 đồng/kWh (truy cập 23/11/2026): <a href="https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/chinh-sach-moi/99804/cach-tinh-tien-dien-sinh-hoat-cua-nguoi-thue-nha-moi-nhat">https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/chinh-sach-moi/99804/cach-tinh-tien-dien-sinh-hoat-cua-nguoi-thue-nha-moi-nhat</a></li>
+<li>Điện Máy XANH, "Bảng giá nước sinh hoạt hiện tại và Cách tính tiền nước" — căn cứ Thông báo 3698/TB-CNBT-KDDVKH năm 2025 của Công ty Cổ phần Cấp nước Bến Thành, đơn giá nước sạch, dịch vụ thoát nước và xử lý nước thải từ ngày 01/01/2026 đến 31/12/2026 tại TP.HCM: hộ dân cư đến 4 m³/người/tháng 6.700 đồng/m³ (tổng gồm thuế và phí 9.206 đồng/m³), từ 4 m³ đến 6 m³/người/tháng 12.900 đồng/m³ (tổng 17.725 đồng/m³), trên 6 m³/người/tháng 14.400 đồng/m³ (tổng 19.786 đồng/m³); thuế giá trị gia tăng 5% của tiền nước, phí thoát nước bằng 30% giá nước, thuế 8% của khoản phí thoát nước (truy cập 23/11/2026): <a href="https://www.dienmayxanh.com/kinh-nghiem-hay/bang-gia-nuoc-sinh-hoat-1597955">https://www.dienmayxanh.com/kinh-nghiem-hay/bang-gia-nuoc-sinh-hoat-1597955</a></li>
+<li>Tạp chí Năng lượng Việt Nam, "Giá điện sinh hoạt 5 bậc thay 6 bậc và những vấn đề cần hoàn thiện trước khi áp dụng" — Bộ Công Thương đề xuất áp dụng biểu giá điện sinh hoạt 5 bậc thay cho 6 bậc hiện hành; theo Quyết định 14/2025/QĐ-TTg, cơ cấu biểu giá đã được thiết kế lại từ 6 bậc xuống 5 bậc, nhưng quy định chuyển tiếp khiến biểu giá mới chưa được triển khai trên hóa đơn, trong khi biểu giá 6 bậc vẫn tiếp tục được áp dụng (truy cập 23/11/2026): <a href="https://nangluongvietnam.vn/gia-dien-sinh-hoat-5-bac-thay-6-bac-va-nhung-van-de-can-hoan-thien-truoc-khi-ap-dung-36819.html">https://nangluongvietnam.vn/gia-dien-sinh-hoat-5-bac-thay-6-bac-va-nhung-van-de-can-hoan-thien-truoc-khi-ap-dung-36819.html</a></li>
+</ol><h2>Bài khác trong chuyên mục Tiết kiệm nước</h2>
+<ul><li><a href="../tiet-kiem-nuoc-sinh-hoat-tu-ro-ri/">Tiết kiệm nước sinh hoạt: bắt đầu từ rò rỉ và thói quen hằng ngày</a></li><li><a href="../voi-sen-tiet-kiem-nuoc/">Vòi sen tiết kiệm nước: chọn loại nào, lắp đặt ra sao</a></li><li><a href="../bon-cau-xa-kep/">Bồn cầu xả kép và bồn cầu tiết kiệm nước: chọn và dùng đúng cách</a></li><li><a href="../tai-su-dung-nuoc-trong-nha/">Tái sử dụng nước trong nhà: nước giặt rau, nước xả máy giặt dùng tưới cây</a></li></ul>
+</main>
+<footer class="site"><div class="wrap">
+<p>Tiết kiệm điện nước trong nhà. Mọi con số trong bài đều ghi rõ nguồn và phạm vi áp dụng; không cam kết tiết kiệm cho mọi nhà.</p>
+<p><a href="../gioi-thieu">Giới thiệu</a> · <a href="../lien-he">Liên hệ</a> · <a href="../chinh-sach-bao-mat">Chính sách bảo mật</a> · <a href="../mau-theo-doi-dien-nuoc">Mẫu theo dõi điện nước</a></p>
+</div></footer>
+</body>
+</html>
