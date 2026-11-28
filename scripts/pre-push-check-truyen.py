@@ -29,7 +29,8 @@ Kiem (moi muc DAT moi cho phep day; 1 muc TRUOT = CHAN day):
   3. robots.txt: Allow /; chi Disallow /admin/; KHI CO --domain: dung 1 dong
      Sitemap cua domain do; KHI KHONG CO --domain: dung 2 dong theo thu tu
      [sunbow, plasma]; khong chan bot quang cao/Googlebot.
-  4. Canonical: moi file HTML (tru admin/index.html) co dung 1 canonical
+  4. Canonical: moi file HTML (tru admin/index.html + 2 trang admin noi bo
+     /admin/chia-se/ + /admin/thong-ke/) co dung 1 canonical
      tuyet doi, dung domain theo ngon ngu (/de/* + /dashboard/ -> sunbow,
      /pl/* -> plasma; trang goc / -> https://sunbow.click/de/ o ban de,
      https://plasma.click/pl/ o ban pl); khong co canonical tro
@@ -41,7 +42,8 @@ Kiem (moi muc DAT moi cho phep day; 1 muc TRUOT = CHAN day):
      (ban pl); "Nguyễn Trung Đức" (co dau) = 0; tu "Ruler" = 0 trong chu
      hien thi (quyet Ruler 14:00/14:02/14:08).
   6. AdSense BAT (Ruler 11:42 27/11): moi HTML dung base.njk dung 1 lan
-     "ca-pub-1934454305970765"; admin/index.html + index.html (trang chuyen
+     "ca-pub-1934454305970765"; admin/index.html + 2 trang admin noi bo
+     (/admin/chia-se/, /admin/thong-ke/) + index.html (trang chuyen
      huong, khong dung base.njk) = 0; ads.txt ton tai dung 1 dong; khong co
      file xac minh google*.html.
   7. Giu cho: "[GIỮ CHỖ]" = 0 trong chu hien thi HTML + sitemap/robots;
@@ -87,6 +89,11 @@ Kiem (moi muc DAT moi cho phep day; 1 muc TRUOT = CHAN day):
      /<lang>/<slug>/ hoac mau /<lang>/{{ slug }}/ (thieu thi OK — build tinh
      tu slug), layout dung, tags neu co phai la list (thieu thi OK — build
      chiu duoc).
+ 15. The chia se OG (Dot 1, Ruler 10:00 28/11): moi trang truyen co du the
+     og (article/title/description/url/image/site_name/locale/published_time
+     + twitter:card) + anh og ton tai trong _site, la JPEG dung 1200x630,
+     <= 300 KB; trang chu co og co ban (website + anh mac dinh dung 1200x630);
+     anh mac dinh moi ngon ngu ton tai dung 1200x630, <= 300 KB.
 
 Exit 0 = DAT het (cho phep day). Exit 1 = co muc truot (CHAN day).
 """
@@ -134,6 +141,42 @@ def resolve_cover_path(raw):
     if p.startswith("media/"):
         p = "src/" + p
     return p
+
+
+def _jpeg_size(f):
+    # Tra ve (rong, cao) cua file JPEG, hoac None neu khong phai JPEG.
+    # Doc tieu de SOF0/SOF1/SOF2, chi dung thu vien chuan — PIL (Pillow)
+    # khong co san tren runner GitHub Actions (deploy 28/11 truot vi
+    # ModuleNotFoundError: No module named 'PIL' o muc 15).
+    try:
+        data = Path(f).read_bytes()
+    except Exception:
+        return None
+    if len(data) < 4 or data[0:2] != b"\xff\xd8":
+        return None
+    i, n = 2, len(data)
+    while i + 9 <= n:
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        marker = data[i + 1]
+        if marker == 0xFF:  # byte dem 0xFF
+            i += 1
+            continue
+        if marker in (0xD8, 0x01) or 0xD0 <= marker <= 0xD9:
+            i += 2
+            continue
+        if i + 4 > n:
+            return None
+        seg_len = (data[i + 2] << 8) | data[i + 3]
+        if seg_len < 2 or i + 2 + seg_len > n:
+            return None
+        if marker in (0xC0, 0xC1, 0xC2):  # SOF0/SOF1/SOF2
+            h = (data[i + 5] << 8) | data[i + 6]
+            w = (data[i + 7] << 8) | data[i + 8]
+            return (w, h)
+        i += 2 + seg_len
+    return None
 
 
 def main():
@@ -353,11 +396,16 @@ def main():
             print(f"3. robots.txt: DAT (Allow /; chi Disallow /admin/; dung {len(exp_sitemaps)} dong Sitemap)")
 
     # ---------- 4. Canonical ----------
+    # Trang admin noi bo (Sveltia + 2 trang cong cu Dot 1) khong co canonical
+    # (khong phai trang cong khai, noindex + Disallow /admin/).
+    canon_skip = {"admin/index.html", "admin/chia-se/index.html", "admin/thong-ke/index.html"}
     canon_bad = []
+    n_canon_checked = 0
     for h in htmls:
         rel = str(h.relative_to(out))
-        if rel == "admin/index.html":
+        if rel in canon_skip:
             continue
+        n_canon_checked += 1
         t = nfc(h.read_text(encoding="utf-8", errors="ignore"))
         ms = re.findall(r'<link rel="canonical" href="([^"]+)"', t)
         if len(ms) != 1:
@@ -373,10 +421,12 @@ def main():
             exp = f"https://{exp_host}{url}"
         if got != exp:
             canon_bad.append(f"{rel}: {got} (can {exp})")
+    if n_canon_checked == 0:
+        canon_bad.append("khong co trang cong khai nao de kiem (build co the da truot)")
     if canon_bad:
         fail(f"canonical sai/thieu ({len(canon_bad)} trang): {canon_bad[:5]}")
     else:
-        print(f"4. Canonical: DAT ({len(htmls) - 1} trang cong khai, dung domain theo ngon ngu)")
+        print(f"4. Canonical: DAT ({n_canon_checked} trang cong khai, dung domain theo ngon ngu)")
 
     # ---------- 5. Email that ----------
     email_files = []
@@ -399,7 +449,8 @@ def main():
                   for f in email_files}
     email_extra = sorted(email_rels - set(legal_rels))
     email_missing = sorted(set(legal_rels) - email_rels)
-    name_ok = all(EMAIL in "" or "Nguyen Trung Duc" in nfc((out / (lr + "/index.html")).read_text(encoding="utf-8", errors="ignore"))
+    name_ok = all((out / (lr + "/index.html")).is_file()
+                  and "Nguyen Trung Duc" in nfc((out / (lr + "/index.html")).read_text(encoding="utf-8", errors="ignore"))
                   for lr in name_pages)
     diacritic = [str(h.relative_to(out)) for h in htmls
                  if "Nguyễn Trung Đức" in nfc(h.read_text(encoding="utf-8", errors="ignore"))]
@@ -416,7 +467,10 @@ def main():
 
     # ---------- 6. AdSense BAT ----------
     pub = "ca-pub-1934454305970765"
-    html_no_code = {"index.html", "admin/index.html"}  # trang chuyen huong goc + CMS admin khong dung base.njk
+    # Trang khong dung base.njk: chuyen huong goc + CMS admin + 2 trang cong cu
+    # admin noi bo (Dot 1) — khong co ma AdSense.
+    html_no_code = {"index.html", "admin/index.html",
+                    "admin/chia-se/index.html", "admin/thong-ke/index.html"}
     bad_code = []
     for h in htmls:
         rel = str(h.relative_to(out))
@@ -785,6 +839,105 @@ def main():
                       for _ in (src / lang / "posts").glob("*.md"))
         print(f"14. Front matter: DAT ({n_posts} bai: date chi ngay, slug hop le, "
               "cover tro file that, permalink dung/thieu, layout dung, tags list/thieu)")
+
+    # ---------- 15. The chia se OG (Dot 1, Ruler 10:00 28/11) ----------
+    # Moi trang truyen: du the og + anh og ton tai trong _site, la JPEG dung
+    # 1200x630, <= 300 KB. Trang chu: og co ban (website + anh mac dinh).
+    og_bad = []
+
+    def _og_img_ok(url, page_rel):
+        # url tuyet doi https://<domain>/img/og/<ten>.jpg -> file trong _site.
+        m = re.match(r"^https://(?:sunbow|plasma)\.click(/img/og/[^\"' ]+\.jpg)$", url or "")
+        if not m:
+            return f"{page_rel}: og:image sai dang: {url}"
+        f = out / m.group(1).lstrip("/")
+        if not f.is_file():
+            return f"{page_rel}: og:image khong co file: {url}"
+        size = _jpeg_size(f)
+        if size is None:
+            return f"{page_rel}: og:image khong phai JPEG hoac khong doc duoc: {url}"
+        if size != (1200, 630):
+            return f"{page_rel}: og:image sai kich thuoc ({size[0]}x{size[1]}): {url}"
+        if f.stat().st_size > 300 * 1024:
+            return f"{page_rel}: og:image vuot 300 KB ({f.stat().st_size // 1024} KB)"
+        return None
+
+    def _og_meta(t):
+        d = {}
+        for k in ("og:type", "og:title", "og:description", "og:url", "og:image",
+                  "og:site_name", "og:locale", "article:published_time"):
+            m = re.search(rf'<meta property="{re.escape(k)}" content="([^"]*)"', t)
+            if m:
+                d[k] = m.group(1)
+        m = re.search(r'<meta name="twitter:card" content="([^"]*)"', t)
+        if m:
+            d["twitter:card"] = m.group(1)
+        return d
+
+    # Anh mac dinh moi ngon ngu (ban theo domain chi can 1; ban gop can ca 2).
+    for lang in ("de", "pl"):
+        if LANG is not None and lang != LANG:
+            continue
+        d = out / "img" / "og" / f"default-{lang}.jpg"
+        if not d.is_file():
+            og_bad.append(f"thieu anh mac dinh img/og/default-{lang}.jpg")
+            continue
+        size = _jpeg_size(d)
+        if size is None:
+            og_bad.append(f"default-{lang}.jpg khong phai JPEG hoac khong doc duoc")
+        elif size != (1200, 630):
+            og_bad.append(f"default-{lang}.jpg sai kich thuoc ({size[0]}x{size[1]})")
+        if d.stat().st_size > 300 * 1024:
+            og_bad.append(f"default-{lang}.jpg vuot 300 KB ({d.stat().st_size // 1024} KB)")
+    # Trang truyen: du the og + anh dung 1200x630.
+    for lang in ("de", "pl"):
+        for slug in built.get(lang, []):
+            p = out / lang / slug / "index.html"
+            rel = f"{lang}/{slug}"
+            if not p.exists():
+                og_bad.append(f"{rel}: thieu trang")
+                continue
+            t = nfc(p.read_text(encoding="utf-8", errors="ignore"))
+            meta = _og_meta(t)
+            for k in ("og:type", "og:title", "og:description", "og:url", "og:image",
+                      "og:site_name", "og:locale", "article:published_time", "twitter:card"):
+                if k not in meta:
+                    og_bad.append(f"{rel}: thieu the {k}")
+            if meta.get("og:type") != "article":
+                og_bad.append(f"{rel}: og:type != article ({meta.get('og:type')})")
+            if meta.get("og:locale") != ("de_DE" if lang == "de" else "pl_PL"):
+                og_bad.append(f"{rel}: og:locale sai ({meta.get('og:locale')})")
+            if meta.get("twitter:card") != "summary_large_image":
+                og_bad.append(f"{rel}: twitter:card sai ({meta.get('twitter:card')})")
+            dom = SUN if lang == "de" else PLA
+            if meta.get("og:url") != f"{dom}/{lang}/{slug}/":
+                og_bad.append(f"{rel}: og:url sai ({meta.get('og:url')})")
+            if "og:image" in meta:
+                err = _og_img_ok(meta["og:image"], rel)
+                if err:
+                    og_bad.append(err)
+    # Trang chu: og co ban (website + anh mac dinh dung 1200x630).
+    for lang in ("de", "pl"):
+        home = out / lang / "index.html"
+        if not home.exists():
+            continue
+        t = nfc(home.read_text(encoding="utf-8", errors="ignore"))
+        meta = _og_meta(t)
+        if meta.get("og:type") != "website":
+            og_bad.append(f"{lang}/ (trang chu): og:type != website ({meta.get('og:type')})")
+        if "og:image" not in meta:
+            og_bad.append(f"{lang}/ (trang chu): thieu og:image")
+        else:
+            err = _og_img_ok(meta["og:image"], f"{lang}/ (trang chu)")
+            if err:
+                og_bad.append(err)
+    if og_bad:
+        fail(f"the chia se OG ({len(og_bad)} loi): " + "; ".join(og_bad[:8])
+             + (f" (+{len(og_bad) - 8} loi nua)" if len(og_bad) > 8 else ""))
+    else:
+        n_story = len(built.get("de", [])) + len(built.get("pl", []))
+        print(f"15. The chia se OG: DAT ({n_story} trang truyen co og article + anh 1200x630; "
+              "trang chu co og co ban)")
 
     print("KET LUAN:", "DAT - CHO PHEP DAY" if ok else "TRUOT - CHAN DAY")
     sys.exit(0 if ok else 1)
